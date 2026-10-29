@@ -36,7 +36,7 @@ function displayBooks() {
       <h3>${book.title}</h3>
       <p>author: ${book.author}</p>
       <p>pages: ${book.pages}</p>
-      <p>stat: ${book.isRead ? 'have read' : 'not read yet'}</p>
+      <p>state: ${book.isRead ? 'have read' : 'not read yet'}</p>
     `;
 
     container.appendChild(bookCard);
@@ -48,3 +48,30 @@ addBookToLibrary("Educated", "Tara Westover", 352, false);
 addBookToLibrary("Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 512, true);
 addBookToLibrary("The Night Circus", "Erin Morgenstern", 387, false);
 addBookToLibrary("Atomic Habits", "James Clear", 320, false);
+
+const newBookBtn = document.getElementById('new-book-btn');
+const bookDialog = document.getElementById('book-dialog');
+const bookForm = document.getElementById('book-form');
+const closeBtn = document.getElementById('close-btn');
+
+newBookBtn.addEventListener('click', () => {
+  bookDialog.showModal();
+});
+
+closeBtn.addEventListener('click', () => {
+  bookDialog.close();
+  bookForm.reset();
+});
+
+bookForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const read = document.getElementById('read').checked;
+
+  addBookToLibrary(title, author, parseInt(pages), read);
+  bookDialog.close();
+  bookForm.reset();
+});

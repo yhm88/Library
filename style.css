@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 24px;
 }
@@ -8,4 +9,13 @@
   background-color: aliceblue;
   border-radius: 18px;
   padding: 20px;
+  flex-grow: 1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  height: 30vh;
+  border: 10px;
 }
