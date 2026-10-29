@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.book-card {
+  background-color: aliceblue;
+  border-radius: 18px;
+  padding: 20px;
+}
