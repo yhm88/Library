@@ -16,6 +16,10 @@ function Book(title, author, pages, isRead) {
   };
 }
 
+Book.prototype.changeStatus = function() {
+  this.isRead = !this.isRead;
+};
+
 function addBookToLibrary(title, author, pages, isRead) {
   const newBook = new Book(title, author, pages, isRead);
   myLibrary.push(newBook);
@@ -38,7 +42,14 @@ function displayBooks() {
       <p>pages: ${book.pages}</p>
       <p>state: ${book.isRead ? 'have read' : 'not read yet'}</p>
       <button class="remove-btn">Remove</button>
+      <button class="change-read-status">Change status</button>
     `;
+
+    const changeBtn = bookCard.querySelector(".change-read-status")
+    changeBtn.addEventListener('click', () => {
+      book.changeStatus();
+      displayBooks();
+    });
 
     const removeBtn = bookCard.querySelector(".remove-btn");
     removeBtn.addEventListener("click", () => {
