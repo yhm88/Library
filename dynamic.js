@@ -37,10 +37,25 @@ function displayBooks() {
       <p>author: ${book.author}</p>
       <p>pages: ${book.pages}</p>
       <p>state: ${book.isRead ? 'have read' : 'not read yet'}</p>
+      <button class="remove-btn">Remove</button>
     `;
+
+    const removeBtn = bookCard.querySelector(".remove-btn");
+    removeBtn.addEventListener("click", () => {
+      removeBook(book.id);
+    });
 
     container.appendChild(bookCard);
   });
+}
+
+function removeBook(id) {
+  const index = myLibrary.findIndex(book => book.id === id);
+
+  if (index !== -1) {
+    myLibrary.splice(index, 1);
+    displayBooks();
+  }
 }
 
 addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, true);
